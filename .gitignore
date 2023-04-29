@@ -1,0 +1,28 @@
+# Ignore compiled Python files
+*.pyc
+
+# Ignore virtual environment folders
+venv/
+env/
+
+# Ignore local development settings
+local_settings.py
+
+# Ignore database files
+*.sqlite3
+
+# Ignore logs
+*.log
+
+# Ignore media and static files
+media/
+static/
+
+# Ignore secret key
+*.secret_key
+
+# Ignore pipenv virtual environment
+Pipfile.lock
+Pipfile
+
+# Ignore any other files or directories specific to your project that you don't want to include in version control

@@ -8,6 +8,7 @@ urlpatterns = [
     path("api/", include("products.urls")),
     path("api/", include("reviews.urls")),
     path("api/", include("users.urls")),
+    path("api/laptops/", include("laptops.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "QShop Administration Page"

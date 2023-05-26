@@ -10,12 +10,12 @@ class UserSerializer(serializers.ModelSerializer):
 			'id', 
 			'username', 
 			'password',
-			'first_name', 
-			'last_name',
+			'name', 
 			'phone', 
 			'gender', 
 			'email', 
 			'address',
+			'image',
 		)
 
 class UserLoginSerializer(serializers.ModelSerializer):

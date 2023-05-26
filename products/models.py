@@ -11,9 +11,9 @@ class Brand(models.Model):
         return self.name
     
 class Category(models.Model):
+    id = models.CharField(primary_key=True, max_length=100, validators=[RegexValidator(r'^[a-zA-Z\-]+$')])
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/product-types/')
-    path = models.CharField(max_length=100, validators=[RegexValidator(r'^[a-zA-Z\-]+$')])
     order = models.PositiveIntegerField()
     def __str__(self) -> str:
         return self.name

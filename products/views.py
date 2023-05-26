@@ -41,19 +41,22 @@ def get_category(request, category_id):
 def get_all_products(request):
 	page = request.GET.get('page')
 	page_size = request.GET.get('pageSize', PAGE_SIZE)
-	sort_by = request.GET.get('sort_by', '')
-	brands = request.GET.get('brands', '').split('|')
-	order = request.GET.get('order', '')
-	type = request.GET.get('category', 'laptop')
+	sort_by = request.GET.get('sort_by')
+	brands = request.GET.get('brands')
+	order = request.GET.get('order')
+	categoryId = request.GET.get('categoryId')
 
-	try:
-		products = Product.objects.filter(category__path=type)
-	except:
-		return Response({}, status.HTTP_400_BAD_REQUEST)
+	products = Product.objects.all().order_by('priority')
+	if categoryId is not None:
+		products = Product.objects.filter(category__id=categoryId)
 
-
-	if len(brands) > 1:
-		products = products.filter(brand__name__in=brands)
+	if brands is not None:
+		try: 
+			brands = brands.split('|')
+		except:
+			return Response({}, status.HTTP_400_BAD_REQUEST)
+		if len(brands) > 1:
+			products = products.filter(brand__name__in=brands)
 	if sort_by == 'price':
 		products = products.annotate(min_price=Min('productoptionset__sale_price', filter=Q(productoption__on_sale=True))).order_by('min_price')
 	if order == 'desc':

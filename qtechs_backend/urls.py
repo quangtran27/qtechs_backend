@@ -2,7 +2,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from users.views import login
 
@@ -10,6 +9,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/auth/login', login, name='login'),
     path("api/", include("products.urls")),
+    path("api/promotions/", include("promotions.urls")),
     path("api/reviews/", include("reviews.urls")),
     path("api/users/", include("users.urls")),
     path("api/carts/", include("carts.urls")),

@@ -13,3 +13,4 @@ class CartAdmin(NestedModelAdmin):
 	inlines = [CartIemInline]
 	
 admin.site.register(Cart, CartAdmin)
+admin.site.register(CartItem)

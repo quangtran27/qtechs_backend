@@ -34,9 +34,9 @@ def register(request):
 	serializer = UserSerializer(data=request.data)
 	if serializer.is_valid():
 		serializer.validated_data['password'] = make_password(serializer.validated_data['password'])
-		serializer.save()
-		serializer.validated_data['password'] = ''
-		return Response(serializer.data, status.HTTP_201_CREATED)
+		user = serializer.save()
+		user.password = ''
+		return Response(UserSerializer(user).data, status.HTTP_201_CREATED)
 	else:
 		errors = get_serializer_errors(serializer)
 		return Response({"error_message": errors}, status.HTTP_400_BAD_REQUEST)

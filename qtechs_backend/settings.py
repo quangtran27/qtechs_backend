@@ -139,7 +139,7 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'https://qtechs-frontend.vercel.app/']
 
 
 REST_FRAMEWORK = {

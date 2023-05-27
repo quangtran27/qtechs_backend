@@ -11,8 +11,6 @@ local_settings.py
 # Ignore logs
 *.log
 
-# Ignore media and static files
-media/
 
 # Ignore secret key
 *.secret_key
